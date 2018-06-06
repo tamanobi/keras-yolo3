@@ -4,6 +4,7 @@
 Run a YOLO_v3 style detection model on test images.
 """
 
+import sys
 import colorsys
 import os
 import random
@@ -198,16 +199,14 @@ def detect_video(yolo, video_path, output_path=""):
 
 
 def detect_img(yolo):
-    while True:
-        img = input('Input image filename:')
-        try:
-            image = Image.open(img)
-        except:
-            print('Open Error! Try again!')
-            continue
-        else:
-            r_image = yolo.detect_image(image)
-            r_image.show()
+    try:
+        image = Image.open(sys.args[1]) # filename
+    except:
+        print('Open Error!')
+        continue
+    else:
+        r_image = yolo.detect_image(image)
+        r_image.show()
     yolo.close_session()
 
 
