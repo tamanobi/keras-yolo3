@@ -203,7 +203,6 @@ def detect_img(yolo):
         image = Image.open(sys.args[1]) # filename
     except:
         print('Open Error!')
-        continue
     else:
         r_image = yolo.detect_image(image)
         r_image.show()
